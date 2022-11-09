@@ -15,7 +15,6 @@ install() {
   else
     # linux
     sudo snap install multipass
-    return 1
   fi
 }
 
