@@ -1,0 +1,22 @@
+#!/bin/bash
+
+install() {
+  # get system os/arch
+  local arch="$PACKAGE_OS_ARCH"
+  local kernel="$PACKAGE_OS_KERNEL"
+  local platform="$PACKAGE_OS_PLATFORM"
+  # usr_bin_dir
+  local usr_bin_dir="$PACKAGE_USER_BIN_DIR"
+  local tmp_dir="$PACKAGE_TMP_DIR"
+
+  # reference: https://github.com/canonical/multipass
+  if [ "$(os::is_macos)" = "true" ]; then
+    pm install --cask multipass
+  else
+    # linux
+    sudo snap install multipass
+    return 1
+  fi
+}
+
+export -f install
